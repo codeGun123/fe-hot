@@ -1,0 +1,27 @@
+{
+  "name": "hot",
+  "version": "1.0.0",
+  "description": "nextjs",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^8.0.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeGun123/fe-hot.git"
+  },
+  "author": "gun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeGun123/fe-hot/issues"
+  },
+  "homepage": "https://github.com/codeGun123/fe-hot#readme"
+}
