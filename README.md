@@ -1,0 +1,2 @@
+# fe-hot
+nextjs
