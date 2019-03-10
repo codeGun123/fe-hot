@@ -1,7 +1,7 @@
 // 登录页面
 import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
-import './login.less';
+import './index.less';
 import fetch from 'isomorphic-unfetch';
 
 const FormItem = Form.Item;
@@ -43,7 +43,7 @@ class Login extends React.Component {
                     ]
                   })(
                     <Input
-                      title="账号"
+                      name="phoneNum"
                       prefix={<Icon type="user" style={{ color: '#666' }} />}
                       placeholder="请输入账号"
                     />
