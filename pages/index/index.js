@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default () => (
   <div>
-    <div>首页133</div>
-    <a href="/login">登录1</a>
+    <div>首页 hh</div>
+    <a href="/login">登录 3 </a>
     <hr />
 
     <Link href="/login">

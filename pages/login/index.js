@@ -33,7 +33,7 @@ class Login extends React.Component {
             <div className="mt30">
               <Form onSubmit={this.handleSubmit} layout="horizontal">
                 <FormItem>
-                  {getFieldDecorator('nickname', {
+                  {getFieldDecorator('phoneNum', {
                     rules: [
                       {
                         required: true,
@@ -43,7 +43,6 @@ class Login extends React.Component {
                     ]
                   })(
                     <Input
-                      name="phoneNum"
                       prefix={<Icon type="user" style={{ color: '#666' }} />}
                       placeholder="请输入账号"
                     />
@@ -51,12 +50,21 @@ class Login extends React.Component {
                 </FormItem>
 
                 <FormItem>
-                  <Input
-                    name="password"
-                    prefix={<Icon type="lock" style={{ color: '#666' }} />}
-                    type="password"
-                    placeholder="请输入密码"
-                  />
+                  {getFieldDecorator('password', {
+                    rules: [
+                      {
+                        required: true,
+                        message: '请输入密码!',
+                        whitespace: true
+                      }
+                    ]
+                  })(
+                    <Input
+                      prefix={<Icon type="lock" style={{ color: '#666' }} />}
+                      type="password"
+                      placeholder="请输入密码"
+                    />
+                  )}
                 </FormItem>
 
                 <FormItem>
