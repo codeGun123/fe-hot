@@ -1,4 +1,5 @@
 import React from 'react';
+import { renderClientError, renderServeError } from '../components/Error/index';
 
 export default class Error extends React.Component {
   static getInitialProps({ res, err }) {
@@ -9,10 +10,16 @@ export default class Error extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.statusCode
-          ? `服务端错误 ${this.props.statusCode}`
-          : '客户端错误'}
+      <div className="server-container">
+        {this.props.statusCode ? renderServeError : renderClientError}
+
+        <style jsx>{`
+          .server-container {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+          }
+        `}</style>
       </div>
     );
   }

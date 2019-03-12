@@ -16,17 +16,22 @@ function parseJSON(response) {
   return response.json();
 }
 
-const options = {
+const header = {
   // 可跨域携带cookie
-  credentials: 'include'
+  credentials: 'include',
+  mode: 'cors',
+  method: 'get'
 };
 
-// 带测试
-export default function request(url, options) {
-  let opt = options || {};
-  return fetch(url, { credentials: 'include', mode: 'cors', ...opt })
+// 待测试
+function request(url, options = {}) {
+  return fetch(url, { ...header, ...options })
     .then(checkStatus)
     .then(parseJSON)
     .then(data => data)
     .catch(err => err);
 }
+
+export const get = (url, options) => request(url, options);
+export const post = (url, options) =>
+  request(url, { method: 'post', ...options });
