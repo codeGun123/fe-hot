@@ -1,0 +1,10 @@
+// @import '~antd/dist/antd.less';// 待处理
+@import './antd-custom.less';
+@import './public/index.less';
+@import './components/index.less';
+
+// 修复antd生成 div 其 position=absolute 导致无法继续操作问题
+
+html > body > div {
+  position: static !important;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
-import className from './index.less';
-
+import './index.less';
 export default class Layout extends React.Component {
   render() {
     const { children } = this.props;

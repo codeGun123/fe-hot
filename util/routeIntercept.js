@@ -1,3 +1,6 @@
+/********** 路由跳转前拦截 *********/
+
+
 import Router from 'next/router';
 
 //

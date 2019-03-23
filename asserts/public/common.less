@@ -1,0 +1,94 @@
+/* 通用样式 */
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.z-index-100 {
+  z-index: 100;
+}
+
+.z-index-200 {
+  z-index: 200;
+}
+
+.z-index-300 {
+  z-index: 300;
+}
+
+.z-index-9999 {
+  z-index: 100;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.border-shadow {
+  box-shadow: 0px 0px 9px rgba(201, 201, 201, 0.3);
+  border-radius: 4px;
+}
+
+/********** 常用样式 *********/
+
+/* 钱-start */
+.money-tag {
+  font-family: DIN Alternate Bold;
+  font-weight: 600;
+  font-size: 20px;
+  padding-left: 8px;
+  position: relative;
+  display: inline-block;
+}
+
+.money-tag::before {
+  font-family: DIN Alternate Bold;
+  content: '¥';
+  font-size: 14px;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+}
+/* 钱-end */
+
+/* 品牌-start */
+.brand-tag {
+  font-size: 10px;
+  height: 15px;
+  line-height: 15px;
+  padding: 0 3px 0 33px;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  background-color: #e1ae68;
+  color: #333;
+}
+
+.brand-tag::before {
+  font-size: 9px;
+  content: '品牌';
+  width: 30px;
+  height: 15px;
+  line-height: 15px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+}
+/* 品牌-end */
+
+.btn-* {
+  cursor: pointer;
+}
