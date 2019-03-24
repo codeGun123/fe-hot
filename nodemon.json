@@ -1,5 +1,5 @@
 {
   "restartable": "rs",
   "verbose": true,
-  "watch": ["server/**/*.js"]
+  "watch": ["util/**/*.js", "routes/**/*.js"]
 }

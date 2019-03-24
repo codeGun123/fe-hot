@@ -2,32 +2,52 @@
 import React, { Fragment } from 'react';
 import { Form, Input, Icon, Button, Select } from 'antd';
 import Router from 'next/router';
-import { setTokenStorage, setUserInfoStorage } from '../../util/index';
+import {
+  getUserInfoStorage,
+  setUserInfoStorage,
+  removeUserInfoStorage
+} from '../../util/index';
 import { login, getUserInfo } from './action';
 import { ACCOUNT_TYPE } from '../../global/index';
 import * as styles from './index.less';
 const FormItem = Form.Item;
 const { Option } = Select;
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.doLogin = this.doLogin.bind(this);
+  }
+
+  // 默认尝试登录一次
+  componentDidMount() {
+    const userInfo = getUserInfoStorage();
+    if (userInfo) {
+      const { accountType, phoneNum, password } = userInfo;
+      this.doLogin({ accountType, phoneNum, password });
+    }
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        login(values).then(res => {
-          const { data } = res;
-
-          if (data && data.token) {
-            setTokenStorage(data.token || data);
-
-            // getUserInfo().then(res => {
-            //   setUserInfoStorage(res.data);
-            //   Router.push('/index');
-            // });
-          }
-        });
+        this.doLogin(values);
       }
     });
   };
+
+  async doLogin(values) {
+    const { data } = await login(values);
+
+    if (data) {
+      const { password } = values;
+      setUserInfoStorage({ ...data, password });
+      // 跳转首页
+      Router.push('/system');
+    } else {
+      removeUserInfoStorage();
+    }
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -60,11 +80,11 @@ class Login extends React.Component {
                     rules: [
                       {
                         required: true,
-                        message: '请选择平台!',
+                        message: '请选择!',
                         whitespace: true
                       }
                     ]
-                  })(<Select placeholder="请选择平台">{optionHtml}</Select>)}
+                  })(<Select placeholder="请选择">{optionHtml}</Select>)}
                 </FormItem>
 
                 <FormItem>
@@ -106,7 +126,7 @@ class Login extends React.Component {
                 <FormItem>
                   <Button
                     type="primary"
-                    className="btn-login"
+                    className={styles['btn-login']}
                     htmlType="submit"
                   >
                     登录

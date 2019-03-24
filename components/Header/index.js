@@ -1,39 +1,55 @@
 import React from 'react';
-import { Dropdown, Menu, Icon } from 'antd';
+import { Dropdown, Menu, Icon, Row, Col } from 'antd';
 import Router from 'next/router';
+import classNames from 'classnames/bind';
 import MyHeader from '../MyHeader';
 const { getUserInfoStorage } = require('../../util/storage');
 import { removeTokenStorage, removeUserInfoStorage } from '../../util';
-import './index.less';
+import styles from './index.less';
+
+const cx = classNames.bind(styles);
 
 export default class Header extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
+    this.handleHome = this.handleHome.bind(this);
   }
 
-  componentDidMount() {}
-
-  handleHome = () => {
+  handleHome() {
     Router.push('/index');
-  };
+  }
 
-  handleMenu = () => {
-    const { showOut } = this.state;
-    this.setState({ showOut: !showOut });
-  };
-
-  handleOut = () => {
-    // 清除登录信息， 跳转登录页面
-    removeTokenStorage();
-    removeUserInfoStorage();
-    Router.push('/login');
-  };
+  handleMenu({ key }) {
+    if (key === 'logout') {
+      removeUserInfoStorage();
+      Router.push('/login');
+    }
+  }
 
   render() {
+    const menu = (
+      <Menu onClick={this.handleMenu}>
+        <Menu.Item key="Info">修改资料</Menu.Item>
+        <Menu.Item key="pwd">修改密码</Menu.Item>
+        <Menu.Item key="logout">注销登录</Menu.Item>
+      </Menu>
+    );
+
     return (
-      <div className="header-nav">
-        <MyHeader />
-      </div>
+      <header className={styles['header']}>
+        <Row type="flex" align="middle">
+          <Col span={12}>
+            <span className={styles['header-title']}>热拌系统ERP后台</span>
+          </Col>
+          <Col span={12} className={styles['text-right']}>
+            <Dropdown overlay={menu}>
+              <span className={cx('fz16', 'pointer')}>
+                <Icon type="user" /> 大炮 <Icon type="caret-down" />
+              </span>
+            </Dropdown>
+          </Col>
+        </Row>
+      </header>
     );
   }
 }

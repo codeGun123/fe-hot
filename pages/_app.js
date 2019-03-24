@@ -6,7 +6,7 @@ import Router, { withRouter } from 'next/router';
 import NProgress from 'nprogress';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
-import '../asserts/style.less';
+import '../assets/style.less';
 
 // 进度条设置  无效？
 // Router.events.on('routeChangeStart', url => {

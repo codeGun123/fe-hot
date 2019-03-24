@@ -11,7 +11,7 @@ import NProgress from 'nprogress';
 
 // import fetch from 'node-fetch';
 import { METHOD } from './constants';
-const { getTokentorage } = require('./storage');
+const { getUserInfoStorage } = require('./storage');
 
 const codeMsg = {
   110101: '用户名不存在',
@@ -64,35 +64,13 @@ function formatBody(params) {
   return '';
 }
 
-// function formatOptions(params, token) {
-//   const body = formatBody(params);
-
-//   return {
-//     method: params.method,
-//     headers: {
-//       // Accept: '*/*',
-//       // 'Access-Control-Allow-Origin': '*',
-//       // 'Access-Control-Request-Method': '*',
-//       'Content-Type': 'application/json'
-//       // token: token || ''
-//     },
-//     // 允许跨域
-//     mode: 'cors',
-//     // 可跨域携带cookie
-//     credentials: 'include',
-//     ...(token ? { token } : {}),
-//     ...(body ? { body } : {})
-//   };
-// }
-
-function formatOptions(params, token) {
+function formatOptions(params) {
   const body = formatBody(params);
 
   return {
     method: params.method,
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { token } : {}),
       platform: 'STORE_SYSTEM'
     },
     // 允许跨域
@@ -121,12 +99,7 @@ function checkResultCode(response) {
   NProgress.done();
   const { resultCode, resultMsg } = response;
 
-  // 兼容 hot
-  if (!resultCode) {
-    return response;
-  }
-
-  if (resultCode === 200) {
+  if (parseInt(resultCode, 10) === 200) {
     return response;
   } else if (resultCode === 110103 || resultCode === 100402) {
     message.error(resultMsg);
@@ -137,19 +110,8 @@ function checkResultCode(response) {
   }
 }
 
-function checkToken(url) {
-  const token = getTokentorage() || '';
-
-  if (!url.includes('/login') && !token) {
-    Router.push('/login');
-    return;
-  }
-
-  return token;
-}
-
 function request(params) {
-  const token = getTokentorage() || '';
+  const token = getUserInfoStorage() || '';
 
   // 临时处理
   if (!params.url.includes('/login') && !token) {

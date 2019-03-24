@@ -12,6 +12,17 @@ nextjs 先解决问题再优化
 
        强制 position=static
 
+#### 3. classnames 组合 css-modules 用法
+
+        https://www.npmjs.com/package/classnames
+
+        import classNames from 'classnames/bind';
+        import styles from './index.less'; //  fz16, pointer
+
+        let cx = classNames.bind(styles);
+
+        <button className={cx('fz16', 'pointer')}>{text}</button>
+
 ## 项目规范：
 
 1. 需要缓存的信息，必须使用 util/storage.js 中的方法
