@@ -8,6 +8,16 @@ nextjs 先解决问题再优化
 
         https://www.yuque.com/steven-kkr5g/aza/ig3x9w
 
+        antd提供的组件必须不能直接设置样式值， 而应该重置  
+
+        /**  重置antd样式---start  */
+        :global {
+                .ant-layout-header {
+                        padding: 0 @layout-padding;
+                }
+        }
+        /**  重置antd样式---start  */
+
 #### 2. antd 组件产生 body 下 div 其 position=absolute 导致无法继续操作问题
 
        强制 position=static

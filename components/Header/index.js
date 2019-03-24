@@ -11,7 +11,19 @@ const cx = classNames.bind(styles);
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: {}
+    };
     this.handleHome = this.handleHome.bind(this);
+  }
+
+  componentDidMount() {
+    // 设置用户名称
+    const user = getUserInfoStorage();
+
+    if (user) {
+      this.setState({ user });
+    }
   }
 
   handleHome() {
@@ -26,6 +38,7 @@ export default class Header extends React.Component {
   }
 
   render() {
+    const { user } = this.state;
     const menu = (
       <Menu onClick={this.handleMenu}>
         <Menu.Item key="Info">修改资料</Menu.Item>
@@ -43,7 +56,8 @@ export default class Header extends React.Component {
           <Col span={12} className={cx('text-right')}>
             <Dropdown overlay={menu}>
               <span className={cx('fz16', 'pointer')}>
-                <Icon type="user" /> 大炮 <Icon type="caret-down" />
+                <Icon type="user" /> {user && user.userName}{' '}
+                <Icon type="caret-down" />
               </span>
             </Dropdown>
           </Col>

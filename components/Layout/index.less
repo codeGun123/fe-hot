@@ -1,5 +1,30 @@
 @import '../../assets/style.less';
 
+@layout-padding: 24px;
+
+/**  重置antd样式---start  */
+:global {
+  .ant-layout-header {
+    padding: 0 @layout-padding;
+  }
+}
+/**  重置antd样式---start  */
+
 .layout {
   height: 100%;
+
+  &-sider {
+    background: @white;
+  }
+
+  &-content {
+    padding: @layout-padding;
+  }
+
+  &-content-box {
+    background: @white;
+    padding: @layout-padding;
+    margin: 0;
+    min-height: 400;
+  }
 }

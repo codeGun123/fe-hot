@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import Link from 'next/link';
 import classNames from 'classnames/bind';
 import HotHeader from '../Header/index';
 import styles from './index.less';
@@ -21,12 +22,12 @@ export default class HotLayout extends Component {
           <HotHeader onToggle={this.handleToggle} />
         </Header>
         <Layout>
-          <Sider className={cx('white')}>
+          <Sider className={cx('layout-sider')}>
             <Menu
               mode="inline"
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              style={{ height: '100%', borderRight: 0 }}
+              defaultSelectedKeys={['5']}
+              defaultOpenKeys={['sub2']}
+              className={cx('layout-menu')}
             >
               <SubMenu
                 key="sub1"
@@ -50,10 +51,21 @@ export default class HotLayout extends Component {
                   </span>
                 }
               >
-                <Menu.Item key="5">菜单管理</Menu.Item>
-                <Menu.Item key="6">权限管理</Menu.Item>
-                <Menu.Item key="7">组织管理</Menu.Item>
-                <Menu.Item key="8">员工管理</Menu.Item>
+                <Menu.Item key="5">
+                  <Link href="/system/setting">
+                    <a>系统设置</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link href="/system/authority">
+                    <a>权限管理</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="8">
+                  <Link href="/system/account">
+                    <a>账户管理</a>
+                  </Link>
+                </Menu.Item>
               </SubMenu>
               <SubMenu
                 key="sub3"
@@ -79,17 +91,8 @@ export default class HotLayout extends Component {
               </SubMenu>
             </Menu>
           </Sider>
-          <Layout style={{ padding: '24px' }}>
-            <Content
-              style={{
-                background: '#fff',
-                padding: 24,
-                margin: 0,
-                minHeight: 280
-              }}
-            >
-              {children}
-            </Content>
+          <Layout className={cx('layout-content')}>
+            <Content className={cx('layout-content-box')}>{children}</Content>
           </Layout>
         </Layout>
       </Layout>
