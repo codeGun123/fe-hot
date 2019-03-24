@@ -50,7 +50,7 @@ class HotApp extends React.Component {
       return (
         <LocaleProvider locale={zh_CN}>
           <Container>
-            <Header />
+            {/* <Header /> */}
             <Layout>
               <Component {...pagesProps} />
             </Layout>

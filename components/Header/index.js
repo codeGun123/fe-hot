@@ -3,8 +3,7 @@ import { Dropdown, Menu, Icon, Row, Col } from 'antd';
 import Router from 'next/router';
 import classNames from 'classnames/bind';
 import MyHeader from '../MyHeader';
-const { getUserInfoStorage } = require('../../util/storage');
-import { removeTokenStorage, removeUserInfoStorage } from '../../util';
+import { getUserInfoStorage, removeUserInfoStorage } from '../../util';
 import styles from './index.less';
 
 const cx = classNames.bind(styles);
@@ -36,12 +35,12 @@ export default class Header extends React.Component {
     );
 
     return (
-      <header className={styles['header']}>
+      <header className={cx('white')}>
         <Row type="flex" align="middle">
           <Col span={12}>
-            <span className={styles['header-title']}>热拌系统ERP后台</span>
+            <span className={cx('fz20')}>热拌系统ERP后台 </span>
           </Col>
-          <Col span={12} className={styles['text-right']}>
+          <Col span={12} className={cx('text-right')}>
             <Dropdown overlay={menu}>
               <span className={cx('fz16', 'pointer')}>
                 <Icon type="user" /> 大炮 <Icon type="caret-down" />
