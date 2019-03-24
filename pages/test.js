@@ -7,7 +7,7 @@ import {
   getAccountUrl,
   addAccountGroupUrl,
   getAccountGroupUrl
-} from '../config/serverPath';
+} from '../config/index';
 
 export default class Test extends Component {
   constructor(context, props) {

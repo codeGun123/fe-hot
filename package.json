@@ -25,8 +25,11 @@
   },
   "scripts": {
     "dev": "nodemon server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
+    "dev:next": "next",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "export": "next export",
+    "start:next": "next start"
   },
   "repository": {
     "type": "git",

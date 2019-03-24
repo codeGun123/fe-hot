@@ -1,5 +1,5 @@
 const compression = require('compression');
-const { port, app, handle, dev, server } = require('./routes/app');
+const { port, app, handle, dev, server } = require('./routes/config');
 
 console.log(`>等待  http://location:${port}`);
 

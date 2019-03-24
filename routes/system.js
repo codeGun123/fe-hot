@@ -1,4 +1,4 @@
-const { app, server } = require('./app');
+const { app, server } = require('./config');
 
 module.exports = [
   // server.get('/system', (req, res) => {
