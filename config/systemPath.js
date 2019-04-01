@@ -27,12 +27,10 @@ module.exports = {
 
   // 添加用户组
   addAccountGroupUrl: `${ROOT}/platform/accountGroup/add`,
+  // 删除用户组
+  deleteAccountGroupUrl: `${ROOT}/platform/accountGroup/delete`,
+  // 修改用户组
+  updateAccountGroupUrl: `${ROOT}/platform/accountGroup/update`,
   // 获取用户组列表
-  getAccountGroupUrl: `${ROOT}/platform/accountGroup/getByGroupKey`
-
-  // // 获取权限列表
-  // getRoleListUrl :`${HOST}`,
-
-  //  获取权限列表
-  // getAccoutListUrl : `${HOST}`,
+  getAccountGroupUrl: `${ROOT}/platform/accountGroup/all`
 };

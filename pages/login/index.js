@@ -77,6 +77,7 @@ class Login extends React.Component {
               <Form onSubmit={this.handleSubmit} layout="horizontal">
                 <FormItem>
                   {getFieldDecorator('accountType', {
+                    initialValue: Object.values(ACCOUNT_TYPE)[0].value,
                     rules: [
                       {
                         required: true,
@@ -89,6 +90,7 @@ class Login extends React.Component {
 
                 <FormItem>
                   {getFieldDecorator('phoneNum', {
+                    initialValue: 110,
                     rules: [
                       {
                         required: true,
@@ -106,6 +108,7 @@ class Login extends React.Component {
 
                 <FormItem>
                   {getFieldDecorator('password', {
+                    initialValue: 'test',
                     rules: [
                       {
                         required: true,

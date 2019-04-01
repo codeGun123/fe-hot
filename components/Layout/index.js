@@ -25,7 +25,7 @@ export default class HotLayout extends Component {
           <Sider className={cx('layout-sider')}>
             <Menu
               mode="inline"
-              defaultSelectedKeys={['8']}
+              defaultSelectedKeys={['6']}
               defaultOpenKeys={['sub2']}
               className={cx('layout-menu')}
             >
@@ -57,8 +57,8 @@ export default class HotLayout extends Component {
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="6">
-                  <Link href="/system/authority">
-                    <a>权限管理</a>
+                  <Link href="/system/group">
+                    <a>组织管理</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="8">

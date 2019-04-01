@@ -7,7 +7,7 @@ module.exports = [
   server.get('/system/account', (req, res) => {
     return app.render(req, res, '/system/account', req.query);
   }),
-  server.get('/system/authority', (req, res) => {
-    return app.render(req, res, '/system/authority', req.query);
+  server.get('/system/group', (req, res) => {
+    return app.render(req, res, '/system/group', req.query);
   })
 ];

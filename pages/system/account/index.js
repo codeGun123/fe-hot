@@ -45,7 +45,7 @@ const accountTypeString = value => {
   return current.label;
 };
 
-class HotMenu extends Component {
+class HotAccount extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,8 +53,7 @@ class HotMenu extends Component {
       dataSource: [],
       visible: false,
       confirmDirty: false,
-      parentMenu: {}, // 父级菜单
-      current: {} // 当前选中菜单
+      current: {} // 当前选中项
     };
     this.loadData = this.loadData.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -232,7 +231,7 @@ class HotMenu extends Component {
   }
 
   render() {
-    const { dataSource, visible, parentMenu = {}, current = {} } = this.state;
+    const { dataSource, visible, current = {} } = this.state;
     const { getFieldDecorator } = this.props.form;
     const columns = this.renderColumns();
 
@@ -300,7 +299,7 @@ class HotMenu extends Component {
                 rules: [{ required: true, message: '输入手机号!' }]
               })(<Input placeholder="输入手机号" />)}
             </Form.Item>
-            <Form.Item label="密码">
+            {/* <Form.Item label="密码">
               {getFieldDecorator('password', {
                 initialValue: current.password,
                 rules: [
@@ -330,7 +329,7 @@ class HotMenu extends Component {
                   onBlur={this.handleConfirmBlur}
                 />
               )}
-            </Form.Item>
+            </Form.Item> */}
             {/* <Form.Item label="所属组织">
               {getFieldDecorator('accountName', {
                 rules: [{ required: true, message: '选择所属组织!' }]
@@ -358,5 +357,5 @@ class HotMenu extends Component {
   }
 }
 
-const WrappedForm = Form.create()(HotMenu);
+const WrappedForm = Form.create()(HotAccount);
 export default WrappedForm;
