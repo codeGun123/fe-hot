@@ -8,7 +8,7 @@ nextjs 先解决问题再优化
 
         https://www.yuque.com/steven-kkr5g/aza/ig3x9w
 
-        antd提供的组件必须不能直接设置样式值， 而应该重置  
+        antd提供的组件必须不能直接设置样式值， 而应该重置
 
         /**  重置antd样式---start  */
         :global {
@@ -32,6 +32,8 @@ nextjs 先解决问题再优化
         let cx = classNames.bind(styles);
 
         <button className={cx('fz16', 'pointer')}>{text}</button>
+
+        注意引用和格式！
 
 ## 项目规范：
 

@@ -16,7 +16,7 @@ const { getUserInfoStorage } = require('./storage');
 const codeMsg = {
   110101: '用户名不存在',
   110102: '用户名或密码错误',
-  110103: '用户登录已过期',
+  11403: '用户登录已过期',
   110104: '用户操作已被禁止',
   110105: '参数错误',
   110106: '数据签名校验失败',
@@ -44,11 +44,11 @@ function formatUrl(params) {
   const { url, body, method } = params;
 
   if (body && method === METHOD.get) {
-    // const query = stringify(body);
-    // return url + '?' + query;
+    const query = stringify(body);
+    return url + '?' + query;
 
-    const query = Object.values(body).join('/');
-    return url + '/' + query;
+    // const query = Object.values(body).join('/');
+    // return url + '/' + query;
   }
 
   return url;
@@ -101,7 +101,7 @@ function checkResultCode(response) {
 
   if (parseInt(resultCode, 10) === 200) {
     return response;
-  } else if (resultCode === 110103 || resultCode === 100402) {
+  } else if (resultCode === '11403') {
     message.error(resultMsg);
     Router.push('/login');
   } else {
@@ -111,16 +111,14 @@ function checkResultCode(response) {
 }
 
 function request(params) {
-  const token = getUserInfoStorage() || '';
-
-  // 临时处理
-  if (!params.url.includes('/login') && !token) {
+  const userInfo = getUserInfoStorage();
+  if (!params.url.includes('/login') && !userInfo) {
     Router.push('/login');
     return Promise.resolve({});
   }
 
   const path = formatUrl(params);
-  const options = formatOptions(params, token);
+  const options = formatOptions(params);
 
   console.log(`数据请求: ${path}`);
   NProgress.start();

@@ -7,9 +7,9 @@ app
   .prepare()
   .then(() => {
     // 生产环境开启压缩
-    if (!dev) {
-      server.use(compression); //gzip
-    }
+    // if (!dev) {
+    //   server.use(compression); //gzip
+    // }
 
     // 页面路由
     require('./routes/index');

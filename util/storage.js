@@ -3,16 +3,16 @@ const { STORAGE } = require('./constants');
 
 /** 通用方法 start */
 function getStorage(key) {
-  const data = localStorage.getItem(key);
+  const data = sessionStorage.getItem(key);
   return data ? JSON.parse(data) : null;
 }
 
 function setStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
+  sessionStorage.setItem(key, JSON.stringify(data));
 }
 
 function removeStorage(key) {
-  localStorage.removeItem(key);
+  sessionStorage.removeItem(key);
 }
 /** 通用方法 end */
 /* token信息-start */
