@@ -49,7 +49,7 @@ class HotAccount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      params: { limit: 20, pageNum: 0, phoneNum: '' },
+      params: { limit: 20, pageNum: 0, searchCode: '' },
       dataSource: [],
       visible: false,
       confirmDirty: false,
@@ -94,10 +94,12 @@ class HotAccount extends Component {
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
 
-  handleChange(value) {
+  handleChange(e) {
     const { params } = this.state;
+    const { value } = e.target;
+
     this.setState({
-      params: { ...params, pageNum: 0, phoneNum: value.trim() }
+      params: { ...params, pageNum: 0, searchCode: value }
     });
   }
 
@@ -242,7 +244,7 @@ class HotAccount extends Component {
             <Input
               style={{ width: 300 }}
               onChange={this.handleChange}
-              placeholder="请输入联系电话"
+              placeholder="请输入用户名或者电话"
             />
           </Col>
           <Col span={12} className={cx('text-right')}>

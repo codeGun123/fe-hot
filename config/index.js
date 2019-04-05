@@ -1,3 +1,4 @@
 module.exports = {
-  ...require('./systemPath')
+  ...require('./systemPath'),
+  ...require('./contractPath')
 };

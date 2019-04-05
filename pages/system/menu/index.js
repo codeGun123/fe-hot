@@ -182,6 +182,7 @@ class HotMenu extends Component {
 
   render() {
     const {
+      menuCode,
       dataSource,
       visible,
       parentMenu = {},
@@ -232,6 +233,15 @@ class HotMenu extends Component {
             wrapperCol={{ span: 16 }}
             onSubmit={this.handleSubmit}
           >
+            <Form.Item label="菜单类型">
+              {getFieldDecorator('groupKey', {
+                initialValue: currentMenu.menuCode || menuCode
+              })(
+                <Select placeholder="选择菜单类型" disabled>
+                  {optionHtml}
+                </Select>
+              )}
+            </Form.Item>
             <Form.Item label="父级菜单名称">
               {getFieldDecorator('parentMenuName', {
                 initialValue: parentMenu.menuName

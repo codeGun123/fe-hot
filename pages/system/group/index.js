@@ -141,15 +141,15 @@ class HotGroup extends Component {
   renderColumns() {
     return [
       {
+        title: '组织名称',
+        dataIndex: 'groupName',
+        key: 'groupName'
+      },
+      {
         title: '组织类型',
         dataIndex: 'groupKey',
         key: 'groupKey',
         render: text => accountTypeString(text)
-      },
-      {
-        title: '组织名称',
-        dataIndex: 'groupName',
-        key: 'groupName'
       },
       {
         title: '有效时间',

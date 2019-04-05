@@ -26,10 +26,10 @@
   },
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "next build && cross-env NODE_ENV=production node server.js",
+    "build": "NODE_ENV=production next build",
     "dev:next": "next",
-    "build": "next build",
-    "export": "next export",
+    "export": "npm run build && next export",
     "start:next": "next start"
   },
   "repository": {

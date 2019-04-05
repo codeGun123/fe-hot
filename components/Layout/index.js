@@ -25,7 +25,7 @@ export default class HotLayout extends Component {
           <Sider className={cx('layout-sider')}>
             <Menu
               mode="inline"
-              defaultSelectedKeys={['6']}
+              defaultSelectedKeys={['5']}
               defaultOpenKeys={['sub2']}
               className={cx('layout-menu')}
             >
@@ -38,7 +38,7 @@ export default class HotLayout extends Component {
                   </span>
                 }
               >
-                <Menu.Item key="1">平台供应商</Menu.Item>
+                <Menu.Item key="1">平台供应商用户</Menu.Item>
                 <Menu.Item key="2">运输公司</Menu.Item>
                 <Menu.Item key="3">客户信息</Menu.Item>
               </SubMenu>
@@ -88,6 +88,17 @@ export default class HotLayout extends Component {
                 }
               >
                 <Menu.Item key="10">订单列表</Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub5"
+                title={
+                  <span>
+                    <Icon type="book" />
+                    合同管理
+                  </span>
+                }
+              >
+                <Menu.Item key="11">合同列表</Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>

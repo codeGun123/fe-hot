@@ -18,14 +18,14 @@ class Login extends React.Component {
     this.doLogin = this.doLogin.bind(this);
   }
 
-  // 默认尝试登录一次
-  componentDidMount() {
-    const userInfo = getUserInfoStorage();
-    if (userInfo) {
-      const { accountType, phoneNum, password } = userInfo;
-      this.doLogin({ accountType, phoneNum, password });
-    }
-  }
+  // // 默认尝试登录一次
+  // componentDidMount() {
+  //   const userInfo = getUserInfoStorage();
+  //   if (userInfo) {
+  //     const { accountType, phoneNum, password } = userInfo;
+  //     this.doLogin({ accountType, phoneNum, password });
+  //   }
+  // }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -43,7 +43,7 @@ class Login extends React.Component {
       const { password } = values;
       setUserInfoStorage({ ...data, password });
       // 跳转首页
-      Router.push('/system');
+      Router.push('/system/menu');
     } else {
       removeUserInfoStorage();
     }
@@ -67,17 +67,16 @@ class Login extends React.Component {
             src="../../static/login-bg.png"
           />
           <div className={styles['login-right']}>
-            <div className="text-center">
-              <img
+            <div style={{ height: 30 }}>
+              {/* <img
                 className={styles['login-head-img']}
                 src="../../static/login-head.png"
-              />
+              /> */}
             </div>
             <div className="mt30">
               <Form onSubmit={this.handleSubmit} layout="horizontal">
                 <FormItem>
                   {getFieldDecorator('accountType', {
-                    initialValue: Object.values(ACCOUNT_TYPE)[0].value,
                     rules: [
                       {
                         required: true,
@@ -90,7 +89,6 @@ class Login extends React.Component {
 
                 <FormItem>
                   {getFieldDecorator('phoneNum', {
-                    initialValue: 110,
                     rules: [
                       {
                         required: true,
@@ -108,7 +106,6 @@ class Login extends React.Component {
 
                 <FormItem>
                   {getFieldDecorator('password', {
-                    initialValue: 'test',
                     rules: [
                       {
                         required: true,

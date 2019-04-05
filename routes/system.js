@@ -1,7 +1,7 @@
 const { app, server } = require('./config');
 
 module.exports = [
-  server.get('/system', (req, res) => {
+  server.get('/system/menu', (req, res) => {
     return app.render(req, res, '/system/menu', req.query);
   }),
   server.get('/system/account', (req, res) => {
